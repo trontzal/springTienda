@@ -23,10 +23,18 @@ public class TiendaSpringApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 
-		repo.save(Producto.builder().nombre("Prueba").precio(new BigDecimal(1234)).build());
+//		repo.save(Producto.builder().nombre("Prueba").precio(new BigDecimal(1234)).build());
 		
 		for(var p: repo.findAll()) {
 			System.out.println(p);
+		}
+		
+		for(var p: repo.findByNombreContains("ru")) {
+			System.out.println(p);
+		}
+		
+		for(var p: repo.findByPrecioBetween(new BigDecimal(1), new BigDecimal(1500))) {
+			System.err.println(p);
 		}
 		
 	}
