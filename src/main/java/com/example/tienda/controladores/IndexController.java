@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.tienda.entidades.Producto;
 import com.example.tienda.servicios.AdminNegocio;
@@ -30,6 +31,13 @@ public class IndexController {
 	public String index(Model modelo) {
 		modelo.addAttribute("productos", usuarioNegocio.obtenerProductos());
 		return "index";
+	}
+	
+	@GetMapping("categorias")
+	@ResponseBody
+	public String categorias() {
+		
+		return usuarioNegocio.obtenerCategorias().toString();
 	}
 	
 	@GetMapping("admin")
