@@ -5,9 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.tienda.entidades.Producto;
 import com.example.tienda.servicios.AdminNegocio;
@@ -34,15 +34,22 @@ public class IndexController {
 	}
 	
 	@GetMapping("categorias")
-	@ResponseBody
-	public String categorias() {
+	public String categorias(Model modelo) {
 		
-		return usuarioNegocio.obtenerCategorias().toString();
+		modelo.addAttribute("categorias", usuarioNegocio.obtenerCategorias());
+		return "categorias";
+	}
+	
+	@GetMapping("categoria/{id}")
+	private String categoria(@PathVariable Long id, Model modelo) {
+		modelo.addAttribute("categoria", usuarioNegocio.obtenerCategoriaPorId(id));
+		return "categoria";
 	}
 	
 	@GetMapping("admin")
-	public String admin(Producto producto) {
+	public String admin(Model modelo, Producto producto) {
 		producto.setNombre(""); // para evitar valores nulos
+		modelo.addAttribute("categorias", usuarioNegocio.obtenerCategorias());
 		return "admin";
 	}
 	

@@ -7,12 +7,19 @@
 <body>
 	<h1>Administración</h1>
 	<form method="post" th:object="${producto}">
+			
 		<input placeholder="Nombre" th:field="*{nombre}">
 		<span th:errors="*{nombre}"></span></br>
-		
-		<input type="number" step=".01" placeholder="Precio" th:field="*{precio}">
-		<span th:errors="*{precio}"></span>
-		
+		 
+		<input type="number" step=".01" placeholder="Precio" th:field="*{precio}"> 
+		<span th:errors="*{precio}"></span> 
+		  
+	 	<select th:field="*{categoria.id}">
+			<option value="">Selecciona una categoría</option>
+			<option th:each="cat : ${categorias}" th:value="${cat.id}" th:text="${cat.nombre}"></option>
+		</select> 
+		<span th:errors="*{categoria}"></span></br>
+
 		<button>Guardar</button>
 	</form>
 

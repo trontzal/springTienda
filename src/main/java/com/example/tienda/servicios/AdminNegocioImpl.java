@@ -9,6 +9,8 @@ import com.example.tienda.entidades.Producto;
 import com.example.tienda.repositorios.CategoryRepository;
 import com.example.tienda.repositorios.ProductRepository;
 
+import dtos.CategoriaConProductosDto;
+
 @Service
 @Primary
 public class AdminNegocioImpl extends UsuarioNegocioImpl implements AdminNegocio{

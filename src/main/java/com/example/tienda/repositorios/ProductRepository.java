@@ -7,12 +7,14 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.example.tienda.entidades.Producto;
 
+import dtos.ProductoDto;
+
 public interface ProductRepository extends CrudRepository<Producto, Long>{
 	
 	Set<Producto> findByNombreContains(String nombre);
 	
 	Set<Producto> findByPrecioBetween(BigDecimal minimo, BigDecimal maximo);
-	
-	Set<Producto> findCategoriaById(Long id);
+
+	Set<ProductoDto> findByCategoriaId(Long id);
 
 }

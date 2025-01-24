@@ -1,0 +1,18 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Administración</title>
+</head>
+<body>
+	<main>
+		<h1 th:text="${categoria.nombre}">LA CATEGORIA</h1>
+		<ul>
+			<li th:each="p : ${categoria.productos}" th:text="${p.nombre}">
+				EL PRODUCTO</li>
+		</ul>
+	</main>
+
+</body>
+</html>
